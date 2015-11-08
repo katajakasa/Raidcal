@@ -1,0 +1,49 @@
+<!DOCTYPE html>{% load static %}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>{% block title %}RaidCal{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'maincal/libs/bootstrap-3.3.5/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'maincal/libs/bootstrap-3.3.5/css/bootstrap-theme.min.css' %}">
+    <script type="text/javascript" src="{% static 'maincal/libs/jquery-2.1.4/jquery-2.1.4.min.js' %}" defer></script>
+    <script type="text/javascript" src="{% static 'maincal/libs/bootstrap-3.3.5/js/bootstrap.min.js' %}" defer></script>
+
+    <script type="text/javascript">
+    $(function() {
+{% block jquery %}{% endblock %}
+    });
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">RaidCal</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li {% if page == 'index' %}class="active"{% endif %}><a href="/">Calendar</a></li>
+                <li {% if page == 'register' %}class="active"{% endif %}><a href="/register">Register</a></li>
+                <li {% if page == 'login' %}class="active"{% endif %}><a href="/login">Login</a></li>
+                <li><a href="/admin">Admin</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+{% block content %}{% endblock %}
+    </div>
+</div>
+</body>
+</html>
