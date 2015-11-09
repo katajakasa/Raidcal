@@ -1,20 +1,52 @@
 {% extends "maincal/base.html" %}
-{% load i18n %}
+{% load i18n static %}
 
 {% block title %}
 {% trans "Calendar" %} - {{ block.super }}
 {% endblock %}
 
+{% block head %}
+{{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'maincal/libs/bootstrap-calendar/css/calendar.css' %}">
+    <script type="text/javascript" src="{% static 'maincal/libs/bootstrap-calendar/js/calendar.min.js' %}"></script>
+    {% with 'maincal/libs/bootstrap-calendar/js/language/'|add:language_code|add:'.js' as cal_lang_js %}
+        <script type="text/javascript" src="{% static cal_lang_js %}"></script>
+    {% endwith %}
+{% endblock %}
+
 {% block jquery %}
 {{ block.super }}
+    var calendar = $('#calendar').calendar({
+        language: '{{ language_code }}',
+        events_source: '{% url 'api_event' %}',
+        tmpl_path: '{% static 'maincal/libs/bootstrap-calendar/tmpls/' %}',
+        modal: '#events-modal'
+    });
 {% endblock %}
 
 {% block content %}
 {{ block.super }}
-<div class="col-sm-6">
-    <h1>{% trans "Calendar" %}</h1>
-    <p>
-    Calendar goes here.
-    </p>
+<div class="modal fade" id="events-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Event</h3>
+            </div>
+            <div class="modal-body" style="height: 400px">
+            </div>
+            <div class="modal-footer">
+                <a href="#" data-dismiss="modal" class="btn">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>{% trans "Calendar" %}</h1>
+            <div id="calendar"></div>
+        </div>
+    </div>
 </div>
 {% endblock %}

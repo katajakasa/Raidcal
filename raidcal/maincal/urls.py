@@ -9,4 +9,6 @@ urlpatterns = patterns(
     url(r'^login/$', 'login', name="login"),
     url(r'^logout/$', 'logout', name="logout"),
     url(r'^logged_out/$', 'logged_out', name="logged_out"),
+    url(r'^event/(?P<event_id>\d+)/', 'event', name='event'),
+    url(r'^api/event/', 'api_event', name='api_event'),
 )

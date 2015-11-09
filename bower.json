@@ -1,0 +1,26 @@
+{
+  "name": "raidcal",
+  "version": "0.1",
+  "homepage": "https://github.com/katajakasa/Raidcal",
+  "authors": [
+    "Tuomas Virtanen <katajakasa@gmail.com>"
+  ],
+  "description": "A Simple Django-based raid calendar",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "raidcal/maincal/static/maincal/libs/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4",
+    "bootstrap-calendar": "~0.2.4",
+    "jquery-migrate": "~1.2.1",
+    "moment": "~2.10.6",
+    "underscore": "~1.8.3"
+  }
+}

@@ -12,8 +12,12 @@
 
 {% block content %}
 {{ block.super }}
-<div class="col-sm-6 col-md-4 col-lg-3">
-    <h1>{% trans "Login" %}</h1>
-    {% crispy login_form login_form.helper %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <h1>{% trans "Login" %}</h1>
+            {% crispy login_form login_form.helper %}
+        </div>
+    </div>
 </div>
 {% endblock %}

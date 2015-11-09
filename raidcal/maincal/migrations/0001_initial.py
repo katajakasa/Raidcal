@@ -20,6 +20,7 @@ class Migration(migrations.Migration):
                 ('description', models.TextField(verbose_name='Event description')),
                 ('start', models.DateTimeField(verbose_name='Event start date')),
                 ('end', models.DateTimeField(verbose_name='Event end date')),
+                ('style', models.IntegerField(default=0, verbose_name='Event style', choices=[(0, 'Normal'), (1, 'Warning'), (2, 'Info'), (3, 'Success'), (4, 'Inverse'), (5, 'Special'), (6, 'Important')])),
                 ('user', models.ForeignKey(help_text='User who this event belongs to', to=settings.AUTH_USER_MODEL)),
             ],
         ),

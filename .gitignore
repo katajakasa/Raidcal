@@ -59,3 +59,5 @@ target/
 db.sqlite3
 .idea/
 raidcal/settings.py
+raidcal/maincal/static/maincal/libs/*
+content/

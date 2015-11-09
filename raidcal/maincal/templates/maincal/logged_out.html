@@ -11,8 +11,12 @@
 
 {% block content %}
 {{ block.super }}
-<div class="col-sm-6">
-    <h1>{% trans "Logged out" %}</h1>
-    <p>{% trans "You succesfully logged out." %}</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>{% trans "Logged out" %}</h1>
+            <p>{% trans "You succesfully logged out." %}</p>
+        </div>
+    </div>
 </div>
 {% endblock %}
