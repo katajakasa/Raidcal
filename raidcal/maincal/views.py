@@ -6,8 +6,10 @@ from forms import LoginForm, RegisterForm
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 
 
+@login_required()
 def index(request):
     days = []
     for i in range(0, 30):
@@ -51,6 +53,7 @@ def login(request):
     }, context_instance=RequestContext(request))
 
 
+@login_required()
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect(reverse('logged_out'))
