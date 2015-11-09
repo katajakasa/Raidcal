@@ -3,7 +3,7 @@
 import json
 
 from forms import LoginForm, RegisterForm
-from models import Event, SiteDecoration
+from models import Event, SiteDecoration, Participation
 from custom.utils import ts_to_dt
 
 from django.shortcuts import render_to_response, get_object_or_404
@@ -73,9 +73,12 @@ def logged_out(request):
 def event(request, event_id):
     cal_event = get_object_or_404(Event, pk=event_id)
 
+    users = Participation.objects.filter(event=cal_event)
+
     return render_to_response('maincal/event.html', {
         'page': 'event',
         'event': cal_event,
+        'users': users
     }, context_instance=RequestContext(request))
 
 
