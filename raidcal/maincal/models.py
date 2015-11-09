@@ -73,7 +73,7 @@ class SiteDecoration(models.Model):
     content = models.TextField()
 
     def __unicode__(self):
-        return self.placement
+        return unicode(self.placement)
 
 
 try:

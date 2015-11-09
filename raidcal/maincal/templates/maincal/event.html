@@ -8,9 +8,24 @@
     <link rel="stylesheet" type="text/css" href="{% static 'maincal/libs/bootstrap/dist/css/bootstrap-theme.css' %}">
 </head>
 <body>
-    <p><strong>{% trans "Event starts" %}:</strong> {{ event.start }}</p>
-    <p><strong>{% trans "Event ends" %}:</strong> {{ event.end }}</p>
-    <p><strong>{% trans "Description:" %}</strong></p>
-    <p>{{ event.description }}</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-6"><strong>{% trans "Event name" %}</strong></div>
+        <div class="col-xs-6">{{ event.name }}</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6"><strong>{% trans "Event starts" %}</strong></div>
+        <div class="col-xs-6">{{ event.start }}</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6"><strong>{% trans "Event ends" %}</strong></div>
+        <div class="col-xs-6">{{ event.end }}</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12"><strong>{% trans "Description" %}</strong></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">{{ event.description }}</div>
+    </div>
 </body>
 </html>

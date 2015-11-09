@@ -3,7 +3,7 @@
 import json
 
 from forms import LoginForm, RegisterForm
-from models import Event
+from models import Event, SiteDecoration
 from custom.utils import ts_to_dt
 
 from django.shortcuts import render_to_response, get_object_or_404
@@ -11,22 +11,19 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib import auth
-from django.conf import settings
 from django.contrib.auth.decorators import login_required
 
 
 @login_required()
 def index(request):
-    days = []
-    for i in range(0, 30):
-        days.append({
-            'day': i,
-        })
+    try:
+        top_deco = SiteDecoration.objects.get(placement=0)
+    except SiteDecoration.DoesNotExist:
+        top_deco = None
 
     return render_to_response('maincal/index.html', {
         'page': 'index',
-        'language_code': settings.LANGUAGE_CODE,
-        'days': days,
+        'top_decoration': top_deco
     }, context_instance=RequestContext(request))
 
 
