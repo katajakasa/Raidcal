@@ -8,6 +8,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'maincal/libs/bootstrap/dist/css/bootstrap-theme.css' %}">
 </head>
 <body>
-    <p>Content</p>
+    <p><strong>{% trans "Event starts" %}:</strong> {{ event.start }}</p>
+    <p><strong>{% trans "Event ends" %}:</strong> {{ event.end }}</p>
+    <p><strong>{% trans "Description:" %}</strong></p>
+    <p>{{ event.description }}</p>
 </body>
 </html>
