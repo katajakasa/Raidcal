@@ -37,10 +37,17 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder'
 )
 
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader'
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+        'OPTIONS': {
+             'loaders': (
+                 'django.template.loaders.app_directories.Loader',
+              ),
+         }
+    },
+]
 
 ROOT_URLCONF = 'raidcal.urls'
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>{% load static %}
+<!DOCTYPE html>{% load static i18n %}
 <html>
 <head>
     <meta charset="utf-8" />
@@ -21,7 +21,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
+                <span class="sr-only">{% trans "Toggle navigation" %}</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -32,10 +32,16 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li {% if page == 'index' %}class="active"{% endif %}><a href="/">Calendar</a></li>
-                <li {% if page == 'register' %}class="active"{% endif %}><a href="/register">Register</a></li>
-                <li {% if page == 'login' %}class="active"{% endif %}><a href="/login">Login</a></li>
-                <li><a href="/admin">Admin</a></li>
+                {% if user.is_authenticated %}
+                    <li {% if page == 'index' %}class="active"{% endif %}><a href="{% url 'index' %}">{% trans "Calendar" %}</a></li>
+                    <li {% if page == 'logged_out' %}class="active"{% endif %}><a href="{% url 'logout' %}">{% trans "Logout" %}</a></li>
+                    {% if user.is_staff %}
+                        <li><a href="/admin">{% trans "Management" %}</a></li>
+                    {% endif %}
+                {% else %}
+                    <li {% if page == 'register' %}class="active"{% endif %}><a href="{% url 'register' %}">{% trans "Register" %}</a></li>
+                    <li {% if page == 'login' %}class="active"{% endif %}><a href="{% url 'login' %}">{% trans "Login" %}</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>

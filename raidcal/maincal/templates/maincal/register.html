@@ -1,17 +1,19 @@
 {% extends "maincal/base.html" %}
-{% load static %}
+{% load i18n crispy_forms_tags %}
 
 {% block title %}
-{{ block.super }}
+{% trans "Register" %} - {{ block.super }}
 {% endblock %}
 
 {% block jquery %}
 {{ block.super }}
+    $('form.uniForm').uniform();
 {% endblock %}
 
 {% block content %}
 {{ block.super }}
 <div class="col-sm-6">
-    <h1>Register</h1>
+    <h1>{% trans "Register" %}</h1>
+    {% crispy register_form register_form.helper %}
 </div>
 {% endblock %}
