@@ -74,6 +74,8 @@ DATABASES = {
     }
 }
 
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = not DEBUG
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'scss -m -C {infile} {outfile}'),
 )
