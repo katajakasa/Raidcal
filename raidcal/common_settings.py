@@ -78,6 +78,8 @@ COMPRESS_PRECOMPILERS = (
 CSP_DEFAULT_SRC = ("'self'", )
 CSP_SCRIPT_SRC = ("'self'", "'unsafe-eval'", )
 CSP_STYLE_SRC = ("'self'", "'unsafe-inline'", )
+CSP_IMG_SRC = ("'self'", "*")
+CSP_MEDIA_SRC = ("'self'", "*")
 CSP_REPORT_ONLY = False
 
 USE_I18N = True
