@@ -1,0 +1,33 @@
+{% extends "maincal/base.html" %}
+{% load i18n static crispy_forms_tags %}
+
+{% block title %}
+{% trans "Profile" %} - {{ block.super }}
+{% endblock %}
+
+{% block head %}
+{{ block.super }}
+{% endblock %}
+
+{% block content %}
+{{ block.super }}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>{% trans "Profile" %}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-5">
+            {% crispy password_form password_form.helper %}
+            <br />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-5">
+            {% crispy profile_form profile_form.helper %}
+            <br />
+        </div>
+    </div>
+</div>
+{% endblock %}

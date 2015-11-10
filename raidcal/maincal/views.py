@@ -3,7 +3,7 @@
 import json
 from datetime import datetime
 
-from forms import LoginForm, RegisterForm
+from forms import LoginForm, RegisterForm, ProfilePasswordChangeForm, ProfileUserChangeForm
 from models import Event, SiteDecoration, Participation
 from custom.utils import ts_to_dt, is_raid_restricted
 
@@ -45,6 +45,11 @@ def register(request):
 
 
 def login(request):
+    # Redirect to index page if user is already logged in
+    if request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('index'))
+
+    # Handle login request
     if request.method == 'POST':
         form = LoginForm(request, data=request.POST)
         if form.is_valid():
@@ -63,6 +68,33 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect(reverse('logged_out'))
+
+
+@login_required()
+def profile(request):
+    # Handle password form submit
+    if request.method == 'POST' and 'change_password' in request.POST:
+        password_form = ProfilePasswordChangeForm(request.user, data=request.POST)
+        if password_form.is_valid():
+            password_form.save()
+            return HttpResponseRedirect(reverse('profile'))
+    else:
+        password_form = ProfilePasswordChangeForm(request.user)
+
+    # Handle profile form submit
+    if request.method == 'POST' and 'change_profile' in request.POST:
+        profile_form = ProfileUserChangeForm(instance=request.user, data=request.POST)
+        if profile_form.is_valid():
+            profile_form.save()
+            return HttpResponseRedirect(reverse('profile'))
+    else:
+        profile_form = ProfileUserChangeForm(instance=request.user)
+
+    return render_to_response('maincal/profile.html', {
+        'page': 'profile',
+        'password_form': password_form,
+        'profile_form': profile_form,
+    }, context_instance=RequestContext(request))
 
 
 def logged_out(request):

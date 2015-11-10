@@ -48,6 +48,7 @@
             <ul class="nav navbar-nav">
                 {% if user.is_authenticated %}
                     <li {% if page == 'index' %}class="active"{% endif %}><a href="{% url 'index' %}">{% trans "Calendar" %}</a></li>
+                    <li {% if page == 'profile' %}class="active"{% endif %}><a href="{% url 'profile' %}">{% trans "Profile" %}</a></li>
                     {% if user.is_staff %}
                         <li><a href="/admin">{% trans "Management" %}</a></li>
                     {% endif %}

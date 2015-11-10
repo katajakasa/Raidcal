@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-10 18:54+0200\n"
+"POT-Creation-Date: 2015-11-11 01:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,27 +18,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\raidcal\maincal\forms.py:17
+#: .\raidcal\maincal\forms.py:18
 msgid "Calendar login"
 msgstr "Kalenteriin kirjautuminen"
 
-#: .\raidcal\maincal\forms.py:20
-#: .\raidcal\maincal\templates\maincal\base.html:49
+#: .\raidcal\maincal\forms.py:21
+#: .\raidcal\maincal\templates\maincal\base.html:58
 #: .\raidcal\maincal\templates\maincal\login.html:5
 #: .\raidcal\maincal\templates\maincal\login.html:13
 msgid "Login"
 msgstr "Kirjaudu sisään"
 
-#: .\raidcal\maincal\forms.py:31
+#: .\raidcal\maincal\forms.py:32
 msgid "New user registration"
 msgstr "Uuden käyttäjän rekisteröinti"
 
-#: .\raidcal\maincal\forms.py:38
-#: .\raidcal\maincal\templates\maincal\base.html:48
+#: .\raidcal\maincal\forms.py:39
+#: .\raidcal\maincal\templates\maincal\base.html:57
 #: .\raidcal\maincal\templates\maincal\register.html:5
 #: .\raidcal\maincal\templates\maincal\register.html:13
 msgid "Register"
 msgstr "Rekisteröinti"
+
+#: .\raidcal\maincal\forms.py:54
+msgid "User password change"
+msgstr "Käyttäjän salasanan muuttaminen"
+
+#: .\raidcal\maincal\forms.py:58
+msgid "Change password"
+msgstr "Tallenna salasana"
+
+#: .\raidcal\maincal\forms.py:69
+msgid "User profile change"
+msgstr "Käyttäjäprofiilin muuttaminen"
+
+#: .\raidcal\maincal\forms.py:73
+msgid "Change profile"
+msgstr "Tallenna profiili"
 
 #: .\raidcal\maincal\models.py:14
 msgid "Normal"
@@ -132,21 +148,27 @@ msgstr "Sivukoriste"
 msgid "Site decorations"
 msgstr "Sivukoristeet"
 
-#: .\raidcal\maincal\templates\maincal\base.html:30
+#: .\raidcal\maincal\templates\maincal\base.html:38
 msgid "Toggle navigation"
 msgstr "Avaa navigaatio"
 
-#: .\raidcal\maincal\templates\maincal\base.html:42
+#: .\raidcal\maincal\templates\maincal\base.html:50
 #: .\raidcal\maincal\templates\maincal\index.html:5
-#: .\raidcal\maincal\templates\maincal\index.html:37
+#: .\raidcal\maincal\templates\maincal\index.html:32
 msgid "Calendar"
 msgstr "Kalenteri"
 
-#: .\raidcal\maincal\templates\maincal\base.html:44
+#: .\raidcal\maincal\templates\maincal\base.html:51
+#: .\raidcal\maincal\templates\maincal\profile.html:5
+#: .\raidcal\maincal\templates\maincal\profile.html:17
+msgid "Profile"
+msgstr "Profiili"
+
+#: .\raidcal\maincal\templates\maincal\base.html:53
 msgid "Management"
 msgstr "Hallinta"
 
-#: .\raidcal\maincal\templates\maincal\base.html:46
+#: .\raidcal\maincal\templates\maincal\base.html:55
 msgid "Logout"
 msgstr "Kirjaudu ulos"
 
@@ -171,31 +193,31 @@ msgstr "Ilmoittautumiset"
 msgid "Description"
 msgstr "Kuvaus"
 
-#: .\raidcal\maincal\templates\maincal\index.html:57
+#: .\raidcal\maincal\templates\maincal\index.html:52
 msgid "Prev"
 msgstr "Edellinen"
 
-#: .\raidcal\maincal\templates\maincal\index.html:58
+#: .\raidcal\maincal\templates\maincal\index.html:53
 msgid "Today"
 msgstr "Tänään"
 
-#: .\raidcal\maincal\templates\maincal\index.html:59
+#: .\raidcal\maincal\templates\maincal\index.html:54
 msgid "Next"
 msgstr "Seuraava"
 
-#: .\raidcal\maincal\templates\maincal\index.html:62
+#: .\raidcal\maincal\templates\maincal\index.html:57
 msgid "Year"
 msgstr "Vuosi"
 
-#: .\raidcal\maincal\templates\maincal\index.html:63
+#: .\raidcal\maincal\templates\maincal\index.html:58
 msgid "Month"
 msgstr "Kuukausi"
 
-#: .\raidcal\maincal\templates\maincal\index.html:64
+#: .\raidcal\maincal\templates\maincal\index.html:59
 msgid "Week"
 msgstr "Viikko"
 
-#: .\raidcal\maincal\templates\maincal\index.html:65
+#: .\raidcal\maincal\templates\maincal\index.html:60
 msgid "Day"
 msgstr "Päivä"
 
