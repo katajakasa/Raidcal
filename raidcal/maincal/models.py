@@ -6,6 +6,7 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from custom.utils import dt_to_ts
 from django.core.urlresolvers import reverse
+from tinymce.models import HTMLField
 
 
 class Event(models.Model):
@@ -21,7 +22,7 @@ class Event(models.Model):
 
     user = models.ForeignKey(User, help_text=_('User who this event belongs to'))
     name = models.CharField(_('Event name'), max_length=32)
-    description = models.TextField(_('Event description'))
+    description = HTMLField(_('Event description'))
     start = models.DateTimeField(_('Event start date'))
     end = models.DateTimeField(_('Event end date'))
     style = models.IntegerField(_('Event style'), choices=STYLE, default=0)
@@ -74,7 +75,7 @@ class SiteDecoration(models.Model):
     user = models.ForeignKey(User)
     placement = models.IntegerField(_('Place where this text should be located at'),
                                     choices=PLACEMENTS, default=0, unique=True)
-    content = models.TextField()
+    content = HTMLField()
 
     def __unicode__(self):
         return unicode(self.placement)

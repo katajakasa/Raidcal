@@ -87,7 +87,7 @@
     {% if top_decoration %}
     <div class="row">
         <div class="col-sm-8">
-            <p class="alert alert-info">{{ top_decoration.content }}</p>
+            <div class="alert alert-info">{{ top_decoration.content|safe }}</div>
         </div>
     </div>
     {% endif %}
