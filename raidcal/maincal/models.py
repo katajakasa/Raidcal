@@ -54,6 +54,10 @@ class Event(models.Model):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        verbose_name = _('Event')
+        verbose_name_plural = _('Events')
+
 
 class Participation(models.Model):
     user = models.ForeignKey(User, verbose_name=_('Participant'))
@@ -61,10 +65,12 @@ class Participation(models.Model):
     joined = models.DateTimeField(_('Date joined'))
 
     def __unicode__(self):
-        return u'{} joined for {}'.format(unicode(self.user), unicode(self.event))
+        return _('{} joined for {}').format(unicode(self.user), unicode(self.event))
 
     class Meta:
         unique_together = (("user", "event"),)
+        verbose_name = _('Participation')
+        verbose_name_plural = _('Participations')
 
 
 class SiteDecoration(models.Model):
@@ -79,6 +85,10 @@ class SiteDecoration(models.Model):
 
     def __unicode__(self):
         return unicode(self.placement)
+
+    class Meta:
+        verbose_name = _('Site decoration')
+        verbose_name_plural = _('Site decorations')
 
 
 try:
