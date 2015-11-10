@@ -23,6 +23,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'csp.middleware.CSPMiddleware',
 )
 
 STATICFILES_FINDERS = (
@@ -73,6 +74,11 @@ COMPRESS_OFFLINE = False
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'scss -m -C {infile} {outfile}'),
 )
+
+CSP_DEFAULT_SRC = ("'self'", )
+CSP_SCRIPT_SRC = ("'self'", "'unsafe-eval'", )
+CSP_STYLE_SRC = ("'self'", "'unsafe-inline'", )
+CSP_REPORT_ONLY = False
 
 USE_I18N = True
 USE_L10N = True

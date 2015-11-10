@@ -16,16 +16,13 @@
     <script type="text/javascript" src="{% static 'maincal/libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'maincal/libs/moment/min/moment-with-locales.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'maincal/libs/underscore/underscore-min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'maincal/js/init.js' %}"></script>
 
     {% block head %}{% endblock %}
-
-    <script type="text/javascript">
-    $(function() {
-{% block jquery %}{% endblock %}
-    });
-    </script>
 </head>
-<body>
+<body data-language-code="{{ language_code }}"
+      data-event-src="{% url 'api_event' %}"
+      data-tpl-path="{% static 'maincal/libs/bootstrap-calendar/tmpls/' %}">
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">

@@ -3,4 +3,5 @@ django-crispy-forms==1.5.2
 django-compressor==1.5
 scss==0.8.73
 django-tinymce==2.0.5
+django-csp==2.0.3
 pytz

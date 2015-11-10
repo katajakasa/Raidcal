@@ -14,53 +14,6 @@
     {% endwith %}
 {% endblock %}
 
-{% block jquery %}
-{{ block.super }}
-    String.prototype.capitalize = function() {
-        return this.charAt(0).toUpperCase() + this.slice(1);
-    }
-
-    var calendar = $('#calendar').calendar({
-        language: '{{ language_code }}',
-        view: 'month',
-        events_source: '{% url 'api_event' %}',
-        tmpl_path: '{% static 'maincal/libs/bootstrap-calendar/tmpls/' %}',
-        tmpl_cache: false,
-        modal: '#events-modal',
-        time_start: '12:00',
-		time_end: '24:00',
-		time_split: '30',
-        modal_title: function(event) { return event.title },
-        onAfterEventsLoad: function(events) {
-			if(!events) {
-				return;
-			}
-		},
-		onAfterViewLoad: function(view) {
-            $('#cal_title').text(this.getTitle().capitalize());
-			$('.btn-group button').removeClass('active');
-			$('button[data-calendar-view="' + view + '"]').addClass('active');
-		},
-		classes: {
-			months: {
-				general: 'label'
-			}
-		}
-    });
-	$('.btn-group button[data-calendar-nav]').each(function() {
-		var $this = $(this);
-		$this.click(function() {
-			calendar.navigate($this.data('calendar-nav'));
-		});
-	});
-	$('.btn-group button[data-calendar-view]').each(function() {
-		var $this = $(this);
-		$this.click(function() {
-			calendar.view($this.data('calendar-view'));
-		});
-	});
-{% endblock %}
-
 {% block content %}
 {{ block.super }}
 <div class="modal fade" id="events-modal">
@@ -70,7 +23,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h3>Event</h3>
             </div>
-            <div class="modal-body" style="height: 400px">
+            <div class="modal-body" id="event-dialog">
             </div>
             <div class="modal-footer">
                 <a href="#" data-dismiss="modal" class="btn btn-warning">Close</a>
@@ -99,7 +52,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
             <div class="btn-group">
                 <button class="btn btn-primary" data-calendar-nav="prev">{% trans 'Prev' %}</button>
                 <button class="btn btn-default" data-calendar-nav="today">{% trans 'Today' %}</button>
