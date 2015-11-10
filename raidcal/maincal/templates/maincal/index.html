@@ -7,11 +7,6 @@
 
 {% block head %}
 {{ block.super }}
-    <link rel="stylesheet" type="text/css" href="{% static 'maincal/libs/bootstrap-calendar/css/calendar.css' %}">
-    <script type="text/javascript" src="{% static 'maincal/libs/bootstrap-calendar/js/calendar.min.js' %}"></script>
-    {% with 'maincal/libs/bootstrap-calendar/js/language/'|add:language_code|add:'.js' as cal_lang_js %}
-        <script type="text/javascript" src="{% static cal_lang_js %}"></script>
-    {% endwith %}
 {% endblock %}
 
 {% block content %}
