@@ -65,6 +65,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 WSGI_APPLICATION = 'raidcal.wsgi.application'
 
+LOCALE_PATHS = (BASE_DIR + '/raidcal/locale', )
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

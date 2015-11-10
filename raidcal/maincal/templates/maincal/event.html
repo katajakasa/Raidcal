@@ -14,22 +14,29 @@
 <body>
 <div class="container-fluid">
     <div class="row padding-5">
-        <div class="btn-group col-xs-12" role="group">
-            <a class="btn btn-default" href="{% url 'signup' event.id %}">Signup</a>
-            <a class="btn btn-default" href="{% url 'signout' event.id %}">Signout</a>
-        </div>
+        {% if not is_restricted %}
+            <div class="btn-group col-xs-12" role="group">
+                {% if is_signed %}
+                    <a class="btn btn-default" href="{% url 'signout' event.id %}">Signout</a>
+                {% else %}
+                    <a class="btn btn-default" href="{% url 'signup' event.id %}">Signup</a>
+                {% endif %}
+            </div>
+        {% else %}
+            <p class="alert alert-info" style="margin: 0;">{% trans "Signups are locked (event is old, ongoing or just starting)." %}</p>
+        {% endif %}
     </div>
     <div class="row padding-5">
-        <div class="col-xs-3"><strong>{% trans "Event starts" %}</strong></div>
-        <div class="col-xs-9">{{ event.start|date:"d.m.Y H:i" }}</div>
+        <div class="col-xs-4"><strong>{% trans "Event starts" %}</strong></div>
+        <div class="col-xs-8">{{ event.start|date:"d.m.Y H:i" }}</div>
     </div>
     <div class="row padding-5">
-        <div class="col-xs-3"><strong>{% trans "Event ends" %}</strong></div>
-        <div class="col-xs-9">{{ event.end|date:"d.m.Y H:i" }}</div>
+        <div class="col-xs-4"><strong>{% trans "Event ends" %}</strong></div>
+        <div class="col-xs-8">{{ event.end|date:"d.m.Y H:i" }}</div>
     </div>
     <div class="row padding-5">
-        <div class="col-xs-3"><strong>{% trans "Signups" %}</strong></div>
-        <div class="col-xs-9">
+        <div class="col-xs-4"><strong>{% trans "Signups" %}</strong></div>
+        <div class="col-xs-8">
             {% if users %}
             <ol>
             {% for user in users %}
@@ -42,8 +49,8 @@
         </div>
     </div>
     <div class="row padding-5">
-        <div class="col-xs-3"><strong>{% trans "Description" %}</strong></div>
-        <div class="col-xs-9">{{ event.description }}</div>
+        <div class="col-xs-4"><strong>{% trans "Description" %}</strong></div>
+        <div class="col-xs-8">{{ event.description }}</div>
     </div>
 </div>
 </body>

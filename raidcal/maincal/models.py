@@ -3,7 +3,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib import admin
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 from custom.utils import dt_to_ts
 from django.core.urlresolvers import reverse
 

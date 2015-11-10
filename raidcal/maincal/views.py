@@ -5,7 +5,7 @@ from datetime import datetime
 
 from forms import LoginForm, RegisterForm
 from models import Event, SiteDecoration, Participation
-from custom.utils import ts_to_dt
+from custom.utils import ts_to_dt, is_raid_restricted
 
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -77,10 +77,20 @@ def event(request, event_id):
 
     users = Participation.objects.filter(event=cal_event)
 
+    is_signed = True
+    try:
+        Participation.objects.get(user=request.user, event=cal_event)
+    except Participation.DoesNotExist:
+        is_signed = False
+
+    is_restricted = is_raid_restricted(cal_event)
+
     return render_to_response('maincal/event.html', {
         'page': 'event',
         'event': cal_event,
-        'users': users
+        'users': users,
+        'is_signed': is_signed,
+        'is_restricted': is_restricted
     }, context_instance=RequestContext(request))
 
 
@@ -88,14 +98,16 @@ def event(request, event_id):
 def signup(request, event_id):
     cal_event = get_object_or_404(Event, pk=event_id)
 
-    try:
-        p = Participation()
-        p.event = cal_event
-        p.user = request.user
-        p.joined = datetime.utcnow()
-        p.save()
-    except IntegrityError:
-        pass
+    is_restricted = is_raid_restricted(cal_event)
+    if not is_restricted:
+        try:
+            p = Participation()
+            p.event = cal_event
+            p.user = request.user
+            p.joined = datetime.utcnow()
+            p.save()
+        except IntegrityError:
+            pass
 
     return HttpResponseRedirect(reverse('event', args=[event_id]))
 
@@ -104,11 +116,13 @@ def signup(request, event_id):
 def signout(request, event_id):
     cal_event = get_object_or_404(Event, pk=event_id)
 
-    try:
-        obj = Participation.objects.get(user=request.user, event=cal_event)
-        obj.delete()
-    except Participation.DoesNotExist:
-        pass
+    is_restricted = is_raid_restricted(cal_event)
+    if not is_restricted:
+        try:
+            obj = Participation.objects.get(user=request.user, event=cal_event)
+            obj.delete()
+        except Participation.DoesNotExist:
+            pass
 
     return HttpResponseRedirect(reverse('event', args=[event_id]))
 
