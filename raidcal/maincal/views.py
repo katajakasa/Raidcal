@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import json
+from datetime import datetime
 
 from forms import LoginForm, RegisterForm
 from models import Event, SiteDecoration, Participation
@@ -12,6 +13,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+from django.db import IntegrityError
 
 
 @login_required()
@@ -80,6 +82,35 @@ def event(request, event_id):
         'event': cal_event,
         'users': users
     }, context_instance=RequestContext(request))
+
+
+@login_required()
+def signup(request, event_id):
+    cal_event = get_object_or_404(Event, pk=event_id)
+
+    try:
+        p = Participation()
+        p.event = cal_event
+        p.user = request.user
+        p.joined = datetime.utcnow()
+        p.save()
+    except IntegrityError:
+        pass
+
+    return HttpResponseRedirect(reverse('event', args=[event_id]))
+
+
+@login_required()
+def signout(request, event_id):
+    cal_event = get_object_or_404(Event, pk=event_id)
+
+    try:
+        obj = Participation.objects.get(user=request.user, event=cal_event)
+        obj.delete()
+    except Participation.DoesNotExist:
+        pass
+
+    return HttpResponseRedirect(reverse('event', args=[event_id]))
 
 
 @login_required()

@@ -62,6 +62,9 @@ class Participation(models.Model):
     def __unicode__(self):
         return u'{} joined for {}'.format(unicode(self.user), unicode(self.event))
 
+    class Meta:
+        unique_together = (("user", "event"),)
+
 
 class SiteDecoration(models.Model):
     PLACEMENTS = (
@@ -69,7 +72,8 @@ class SiteDecoration(models.Model):
     )
 
     user = models.ForeignKey(User)
-    placement = models.IntegerField(_('Place where this text should be located at'), choices=PLACEMENTS, default=0)
+    placement = models.IntegerField(_('Place where this text should be located at'),
+                                    choices=PLACEMENTS, default=0, unique=True)
     content = models.TextField()
 
     def __unicode__(self):

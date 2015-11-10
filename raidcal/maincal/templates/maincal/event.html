@@ -9,9 +9,16 @@
     {% compress css %}
     <link rel="stylesheet" type="text/x-scss" href="{% static 'maincal/style/style.scss' %}">
     {% endcompress %}
+
 </head>
 <body>
 <div class="container-fluid">
+    <div class="row padding-5">
+        <div class="btn-group col-xs-12" role="group">
+            <a class="btn btn-default" href="{% url 'signup' event.id %}">Signup</a>
+            <a class="btn btn-default" href="{% url 'signout' event.id %}">Signout</a>
+        </div>
+    </div>
     <div class="row padding-5">
         <div class="col-xs-3"><strong>{% trans "Event starts" %}</strong></div>
         <div class="col-xs-9">{{ event.start|date:"d.m.Y H:i" }}</div>
@@ -21,18 +28,22 @@
         <div class="col-xs-9">{{ event.end|date:"d.m.Y H:i" }}</div>
     </div>
     <div class="row padding-5">
-        <div class="col-xs-3"><strong>{% trans "Description" %}</strong></div>
-        <div class="col-xs-9">{{ event.description }}</div>
-    </div>
-    <div class="row padding-5">
         <div class="col-xs-3"><strong>{% trans "Signups" %}</strong></div>
         <div class="col-xs-9">
+            {% if users %}
             <ol>
             {% for user in users %}
                 <li class="col-xs-6">{{ user.user.username }}</li>
             {% endfor %}
             </ol>
+            {% else %}
+                No signups!
+            {% endif %}
         </div>
+    </div>
+    <div class="row padding-5">
+        <div class="col-xs-3"><strong>{% trans "Description" %}</strong></div>
+        <div class="col-xs-9">{{ event.description }}</div>
     </div>
 </div>
 </body>
