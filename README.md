@@ -28,7 +28,7 @@ This depends very much on your setup, and therefore there's no quick quide for t
 as a frontend to serve the static files, and uwsgi to run the django as a process. Uwsgi-emperor or supervisord can be
 used to start and stop processes as required / at boot.
 
-### 3.1. Sample update/deployment script
+### 3.1. Sample production update/deployment script
 
 Here's a really simple script for updating a production deployment. It's rather simplified and trusts
 that the user rights etc. are correct, but it works fine as an example.
@@ -48,7 +48,7 @@ python manage.py compilemessages
 sudo service uwsgi reload
 ```
 
-### 3.2. Sample nginx config
+### 3.2. Sample production nginx config
 
 * upstream defines the port and location where nginx can find your wsgi-process.
 * Location /static: This directory contains the static files (css, js, images ...) of the raidcal project. Serve this via nginx.
@@ -72,6 +72,26 @@ server {
         include /etc/nginx/uwsgi_params;
     }
 }
+```
+
+### 3.3. Sample production uwsgi-emperor config
+
+* Make sure the socket is the same as in nginx configuration.
+* Home should point at the virtualenv
+
+```
+[uwsgi]
+chdir           = /var/www/raidcal
+wsgi-file       = /var/www/raidcal/raidcal/wsgi.py
+home            = /var/virtualenv/raidcal
+master          = true
+processes       = 5
+socket          = :9001
+vacuum          = true
+daemonize       = /var/log/uwsgi/app/raidcal.log
+plugin          = python
+uid             = www-data
+gid             = www-data
 ```
 
 ## 4. License
