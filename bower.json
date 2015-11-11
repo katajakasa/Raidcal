@@ -18,7 +18,7 @@
   "dependencies": {
     "bootstrap": "~3.3.5",
     "jquery": "~2.1.4",
-    "bootstrap-calendar": "~0.2.4",
+    "bootstrap-calendar": "git@github.com:Serhioromano/bootstrap-calendar.git#94f4fd08c32314af1ca78a5851fedbc55f70ab67",
     "jquery-migrate": "~1.2.1",
     "moment": "~2.10.6",
     "underscore": "~1.8.3"
