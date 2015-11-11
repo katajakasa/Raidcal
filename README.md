@@ -5,7 +5,11 @@ users join them. Events get locked an hour before the event starts.
 
 ## 1. Requirements
 
-Python 2.7, pip, bower
+* Python 2.7 and pip
+* bower (depends on node.js and npm)
+* For python deps, please see ```requirements.txt```.
+* For JS deps, please see ```bower.json```.
+* A database. A proper database like PostgreSQL or MySQL is recommended. Sqlite is not tested, but may work.
 
 ## 2. Installation for development
 
