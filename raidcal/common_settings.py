@@ -58,6 +58,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 WSGI_APPLICATION = 'raidcal.wsgi.application'
 
+# For event descriptions, frontpage decorations, forum messages.
 TINYMCE_COMPRESSOR = True
 TINYMCE_DEFAULT_CONFIG = {
     'plugins': "table,paste,searchreplace",
@@ -68,6 +69,12 @@ TINYMCE_DEFAULT_CONFIG = {
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 10,
 }
+
+# To sanitize tinymce stuff
+SANITIZER_ALLOWED_TAGS = ['a', 'strong', 'img', 'li', 'ol', 'ul', 'em', 'span', 'p',
+                          'address', 'sup', 'h1', 'h2', 'n3', 'h4', 'h5', 'h6', 'pre']
+SANITIZER_ALLOWED_ATTRIBUTES = ['href']
+SANITIZER_ALLOWED_STYLES = []
 
 COMPRESS_ENABLED = True
 COMPRESS_OFFLINE = False

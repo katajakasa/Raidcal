@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from custom.utils import dt_to_ts
 from django.core.urlresolvers import reverse
 from tinymce.models import HTMLField
+from django.utils import timezone
 
 
 class Event(models.Model):
@@ -73,6 +74,36 @@ class Participation(models.Model):
         verbose_name_plural = _('Participations')
 
 
+class Topic(models.Model):
+    user = models.ForeignKey(User, verbose_name=_('Creator'))
+    time = models.DateTimeField(_('Created'), default=timezone.now)
+    title = models.CharField(max_length=32)
+
+    def __unicode__(self):
+        return unicode(self.title)
+
+    class Meta:
+        verbose_name = _('Topic')
+        verbose_name_plural = _('Topics')
+
+
+class Message(models.Model):
+    user = models.ForeignKey(User, verbose_name=_('User'))
+    time = models.DateTimeField(_('Sent'), default=timezone.now)
+    description = HTMLField(_('Event description'))
+    topic = models.ForeignKey(Topic)
+
+    def __unicode__(self):
+        end = u''
+        if len(self.description) > 16:
+            end = u' ...'
+        return _('{}: {}{}').format(unicode(self.user), unicode(self.description)[0:16], end)
+
+    class Meta:
+        verbose_name = _('Message')
+        verbose_name_plural = _('Messages')
+
+
 class SiteDecoration(models.Model):
     PLACEMENTS = (
         (0, 'Top'),
@@ -91,9 +122,9 @@ class SiteDecoration(models.Model):
         verbose_name_plural = _('Site decorations')
 
 
-try:
-    admin.site.register(Event)
-    admin.site.register(Participation)
-    admin.site.register(SiteDecoration)
-except:
-    pass
+admin.site.register(Event)
+admin.site.register(Participation)
+admin.site.register(SiteDecoration)
+admin.site.register(Topic)
+admin.site.register(Message)
+
