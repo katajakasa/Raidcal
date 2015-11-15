@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-11 01:16+0200\n"
+"POT-Creation-Date: 2015-11-15 06:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,157 +18,223 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\raidcal\maincal\forms.py:18
+#: .\raidcal\maincal\forms.py:22
 msgid "Calendar login"
 msgstr "Kalenteriin kirjautuminen"
 
-#: .\raidcal\maincal\forms.py:21
-#: .\raidcal\maincal\templates\maincal\base.html:58
+#: .\raidcal\maincal\forms.py:25
+#: .\raidcal\maincal\templates\maincal\base.html:56
 #: .\raidcal\maincal\templates\maincal\login.html:5
 #: .\raidcal\maincal\templates\maincal\login.html:13
 msgid "Login"
 msgstr "Kirjaudu sisään"
 
-#: .\raidcal\maincal\forms.py:32
+#: .\raidcal\maincal\forms.py:36
 msgid "New user registration"
 msgstr "Uuden käyttäjän rekisteröinti"
 
-#: .\raidcal\maincal\forms.py:39
-#: .\raidcal\maincal\templates\maincal\base.html:57
+#: .\raidcal\maincal\forms.py:43
+#: .\raidcal\maincal\templates\maincal\base.html:55
 #: .\raidcal\maincal\templates\maincal\register.html:5
 #: .\raidcal\maincal\templates\maincal\register.html:13
 msgid "Register"
 msgstr "Rekisteröinti"
 
-#: .\raidcal\maincal\forms.py:54
+#: .\raidcal\maincal\forms.py:58
 msgid "User password change"
 msgstr "Käyttäjän salasanan muuttaminen"
 
-#: .\raidcal\maincal\forms.py:58
+#: .\raidcal\maincal\forms.py:62
 msgid "Change password"
 msgstr "Tallenna salasana"
 
-#: .\raidcal\maincal\forms.py:69
+#: .\raidcal\maincal\forms.py:73
 msgid "User profile change"
 msgstr "Käyttäjäprofiilin muuttaminen"
 
-#: .\raidcal\maincal\forms.py:73
+#: .\raidcal\maincal\forms.py:77
 msgid "Change profile"
 msgstr "Tallenna profiili"
 
-#: .\raidcal\maincal\models.py:14
+#: .\raidcal\maincal\forms.py:87 .\raidcal\maincal\models.py:84
+msgid "Topic"
+msgstr "Aihe"
+
+#: .\raidcal\maincal\forms.py:88 .\raidcal\maincal\forms.py:118
+msgid "Content"
+msgstr "Viesti"
+
+#: .\raidcal\maincal\forms.py:96
+msgid "Create a new thread"
+msgstr "Uusi keskustelu"
+
+#: .\raidcal\maincal\forms.py:99
+msgid "Create topic"
+msgstr "Luo keskustelu"
+
+#: .\raidcal\maincal\forms.py:126
+msgid "Send a new message"
+msgstr "Lähetä viesti"
+
+#: .\raidcal\maincal\forms.py:128
+msgid "Send"
+msgstr "Lähetä"
+
+#: .\raidcal\maincal\models.py:13
 msgid "Normal"
 msgstr "Normaali"
 
-#: .\raidcal\maincal\models.py:15
+#: .\raidcal\maincal\models.py:14
 msgid "Warning"
 msgstr "Varoitus"
 
-#: .\raidcal\maincal\models.py:16
+#: .\raidcal\maincal\models.py:15
 msgid "Info"
 msgstr "Info"
 
-#: .\raidcal\maincal\models.py:17
+#: .\raidcal\maincal\models.py:16
 msgid "Success"
 msgstr "Menestys"
 
-#: .\raidcal\maincal\models.py:18
+#: .\raidcal\maincal\models.py:17
 msgid "Inverse"
 msgstr "Käänteinen"
 
-#: .\raidcal\maincal\models.py:19
+#: .\raidcal\maincal\models.py:18
 msgid "Special"
 msgstr "Erikoinen"
 
-#: .\raidcal\maincal\models.py:20
+#: .\raidcal\maincal\models.py:19
 msgid "Important"
 msgstr "Tärkeä"
 
-#: .\raidcal\maincal\models.py:23
+#: .\raidcal\maincal\models.py:22
 msgid "User who this event belongs to"
 msgstr "Tapahtuman omistaja"
 
-#: .\raidcal\maincal\models.py:24
+#: .\raidcal\maincal\models.py:23
 msgid "Event name"
 msgstr "Tapahtuman nimi"
 
-#: .\raidcal\maincal\models.py:25
+#: .\raidcal\maincal\models.py:24
 msgid "Event description"
 msgstr "Tapahtuman kuvaus"
 
-#: .\raidcal\maincal\models.py:26
+#: .\raidcal\maincal\models.py:25
 msgid "Event start date"
 msgstr "Tapahtuman alkamisaika"
 
-#: .\raidcal\maincal\models.py:27
+#: .\raidcal\maincal\models.py:26
 msgid "Event end date"
 msgstr "Tapahtuman päättymisaika"
 
-#: .\raidcal\maincal\models.py:28
+#: .\raidcal\maincal\models.py:27
 msgid "Event style"
 msgstr "Tapahtuman tyyli"
 
-#: .\raidcal\maincal\models.py:58 .\raidcal\maincal\models.py:64
+#: .\raidcal\maincal\models.py:57 .\raidcal\maincal\models.py:63
 msgid "Event"
 msgstr "Tapahtuma"
 
-#: .\raidcal\maincal\models.py:59
+#: .\raidcal\maincal\models.py:58
 msgid "Events"
 msgstr "Tapahtumat"
 
-#: .\raidcal\maincal\models.py:63
+#: .\raidcal\maincal\models.py:62
 msgid "Participant"
 msgstr "Osallistuja"
 
-#: .\raidcal\maincal\models.py:65
+#: .\raidcal\maincal\models.py:64
 msgid "Date joined"
 msgstr "Liittymisaika"
 
-#: .\raidcal\maincal\models.py:68
+#: .\raidcal\maincal\models.py:67
 msgid "{} joined for {}"
 msgstr "{} tapahtumassa {}"
 
-#: .\raidcal\maincal\models.py:72
+#: .\raidcal\maincal\models.py:71
 msgid "Participation"
 msgstr "Osallistuminen"
 
-#: .\raidcal\maincal\models.py:73
+#: .\raidcal\maincal\models.py:72
 msgid "Participations"
 msgstr "Osallistumiset"
 
-#: .\raidcal\maincal\models.py:82
+#: .\raidcal\maincal\models.py:76
+msgid "Creator"
+msgstr "Luoja"
+
+#: .\raidcal\maincal\models.py:77
+msgid "Created"
+msgstr "Luotu"
+
+#: .\raidcal\maincal\models.py:85
+msgid "Topics"
+msgstr "Aiheet"
+
+#: .\raidcal\maincal\models.py:89
+msgid "User"
+msgstr "Käyttäjä"
+
+#: .\raidcal\maincal\models.py:90
+msgid "Sent"
+msgstr "Lähetetty"
+
+#: .\raidcal\maincal\models.py:91
+msgid "Message content"
+msgstr "Viestin sisältö"
+
+#: .\raidcal\maincal\models.py:98
+msgid "{}: {}{}"
+msgstr "{}: {}{}"
+
+#: .\raidcal\maincal\models.py:101
+msgid "Message"
+msgstr "Viesti"
+
+#: .\raidcal\maincal\models.py:102
+msgid "Messages"
+msgstr "Viestit"
+
+#: .\raidcal\maincal\models.py:111
 msgid "Place where this text should be located at"
 msgstr "Tekstin sijainti näkymässä"
 
-#: .\raidcal\maincal\models.py:90
+#: .\raidcal\maincal\models.py:119
 msgid "Site decoration"
 msgstr "Sivukoriste"
 
-#: .\raidcal\maincal\models.py:91
+#: .\raidcal\maincal\models.py:120
 msgid "Site decorations"
 msgstr "Sivukoristeet"
 
-#: .\raidcal\maincal\templates\maincal\base.html:38
+#: .\raidcal\maincal\templates\maincal\base.html:35
 msgid "Toggle navigation"
 msgstr "Avaa navigaatio"
 
-#: .\raidcal\maincal\templates\maincal\base.html:50
+#: .\raidcal\maincal\templates\maincal\base.html:47
 #: .\raidcal\maincal\templates\maincal\index.html:5
-#: .\raidcal\maincal\templates\maincal\index.html:32
+#: .\raidcal\maincal\templates\maincal\index.html:35
 msgid "Calendar"
 msgstr "Kalenteri"
 
-#: .\raidcal\maincal\templates\maincal\base.html:51
+#: .\raidcal\maincal\templates\maincal\base.html:48
+#: .\raidcal\maincal\templates\maincal\forum.html:5
+#: .\raidcal\maincal\templates\maincal\forum.html:23
+msgid "Forum"
+msgstr "Keskustelu"
+
+#: .\raidcal\maincal\templates\maincal\base.html:49
 #: .\raidcal\maincal\templates\maincal\profile.html:5
 #: .\raidcal\maincal\templates\maincal\profile.html:17
 msgid "Profile"
 msgstr "Profiili"
 
-#: .\raidcal\maincal\templates\maincal\base.html:53
+#: .\raidcal\maincal\templates\maincal\base.html:51
 msgid "Management"
 msgstr "Hallinta"
 
-#: .\raidcal\maincal\templates\maincal\base.html:55
+#: .\raidcal\maincal\templates\maincal\base.html:53
 msgid "Logout"
 msgstr "Kirjaudu ulos"
 
@@ -193,31 +259,39 @@ msgstr "Ilmoittautumiset"
 msgid "Description"
 msgstr "Kuvaus"
 
-#: .\raidcal\maincal\templates\maincal\index.html:52
+#: .\raidcal\maincal\templates\maincal\forum.html:28
+msgid "Threads"
+msgstr "Keskustelut"
+
+#: .\raidcal\maincal\templates\maincal\forum.html:60
+msgid "Latest posts"
+msgstr "Viimeisimmät viestit"
+
+#: .\raidcal\maincal\templates\maincal\index.html:55
 msgid "Prev"
 msgstr "Edellinen"
 
-#: .\raidcal\maincal\templates\maincal\index.html:53
+#: .\raidcal\maincal\templates\maincal\index.html:56
 msgid "Today"
 msgstr "Tänään"
 
-#: .\raidcal\maincal\templates\maincal\index.html:54
+#: .\raidcal\maincal\templates\maincal\index.html:57
 msgid "Next"
 msgstr "Seuraava"
 
-#: .\raidcal\maincal\templates\maincal\index.html:57
+#: .\raidcal\maincal\templates\maincal\index.html:60
 msgid "Year"
 msgstr "Vuosi"
 
-#: .\raidcal\maincal\templates\maincal\index.html:58
+#: .\raidcal\maincal\templates\maincal\index.html:61
 msgid "Month"
 msgstr "Kuukausi"
 
-#: .\raidcal\maincal\templates\maincal\index.html:59
+#: .\raidcal\maincal\templates\maincal\index.html:62
 msgid "Week"
 msgstr "Viikko"
 
-#: .\raidcal\maincal\templates\maincal\index.html:60
+#: .\raidcal\maincal\templates\maincal\index.html:63
 msgid "Day"
 msgstr "Päivä"
 
@@ -229,3 +303,7 @@ msgstr "Kirjauduttu ulos"
 #: .\raidcal\maincal\templates\maincal\logged_out.html:14
 msgid "You succesfully logged out."
 msgstr "Uloskirjautuminen suoritettu."
+
+#: .\raidcal\maincal\templates\maincal\thread.html:5
+msgid "Thread"
+msgstr "Keskustelu"

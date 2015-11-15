@@ -85,7 +85,7 @@ class ProfileUserChangeForm(forms.ModelForm):
 
 class NewThreadForm(forms.Form):
     topic = forms.CharField(label=_('Topic'), max_length=32)
-    content = forms.CharField(widget=SummernoteInplaceWidget(), required=True)
+    content = forms.CharField(widget=SummernoteInplaceWidget(), required=True, label=_('Content'))
 
     def __init__(self, *args, **kwargs):
         super(NewThreadForm, self).__init__(*args, **kwargs)
@@ -115,7 +115,7 @@ class NewThreadForm(forms.Form):
 
 
 class NewMessageForm(forms.Form):
-    content = forms.CharField(widget=SummernoteInplaceWidget(), required=True)
+    content = forms.CharField(widget=SummernoteInplaceWidget(), required=True, label=_('Content'))
 
     def __init__(self, *args, **kwargs):
         super(NewMessageForm, self).__init__(*args, **kwargs)
