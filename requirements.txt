@@ -1,8 +1,8 @@
 django==1.8.6
-django-crispy-forms==1.5.2
+git+git://github.com/maraujop/django-crispy-forms.git@dev#egg=django-crispy-forms
 django-compressor==1.5
 scss==0.8.73
-django-tinymce==2.0.5
-django-csp==2.0.3
 bleach
+eadred
 pytz
+django-summernote

@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'maincal/libs/bootstrap/dist/css/bootstrap.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'maincal/libs/bootstrap/dist/css/bootstrap-theme.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'maincal/libs/bootstrap-calendar/css/calendar.css' %}">
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     {% compress css %}
     <link rel="stylesheet" type="text/x-scss" href="{% static 'maincal/style/style.scss' %}">
     {% endcompress %}
@@ -21,10 +22,6 @@
     {% with 'maincal/libs/bootstrap-calendar/js/language/'|add:language_code|add:'.js' as cal_lang_js %}
         <script type="text/javascript" src="{% static cal_lang_js %}"></script>
     {% endwith %}
-
-    {% compress js %}
-    <script type="text/javascript" src="{% static 'maincal/js/init.js' %}"></script>
-    {% endcompress %}
 
     {% block head %}{% endblock %}
 </head>
@@ -48,6 +45,7 @@
             <ul class="nav navbar-nav">
                 {% if user.is_authenticated %}
                     <li {% if page == 'index' %}class="active"{% endif %}><a href="{% url 'index' %}">{% trans "Calendar" %}</a></li>
+                    <li {% if page == 'forum' %}class="active"{% endif %}><a href="{% url 'forum' %}">{% trans "Forum" %}</a></li>
                     <li {% if page == 'profile' %}class="active"{% endif %}><a href="{% url 'profile' %}">{% trans "Profile" %}</a></li>
                     {% if user.is_staff %}
                         <li><a href="/admin">{% trans "Management" %}</a></li>

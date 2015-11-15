@@ -1,5 +1,5 @@
 {% extends "maincal/base.html" %}
-{% load i18n static %}
+{% load i18n static compress %}
 
 {% block title %}
 {% trans "Calendar" %} - {{ block.super }}
@@ -7,6 +7,9 @@
 
 {% block head %}
 {{ block.super }}
+    {% compress js %}
+    <script type="text/javascript" src="{% static 'maincal/js/calendar.js' %}"></script>
+    {% endcompress %}
 {% endblock %}
 
 {% block content %}

@@ -11,7 +11,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'crispy_forms',
     'compressor',
-    'tinymce',
+    'django_summernote',
+    'eadred',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -23,7 +24,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'csp.middleware.CSPMiddleware',
 )
 
 STATICFILES_FINDERS = (
@@ -58,36 +58,33 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 WSGI_APPLICATION = 'raidcal.wsgi.application'
 
-# For event descriptions, frontpage decorations, forum messages.
-TINYMCE_COMPRESSOR = True
-TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "table,paste,searchreplace",
-    'theme': "advanced",
-    'height': 400,
-    'width': 600,
-    'resize': 'both',
-    'cleanup_on_startup': True,
-    'custom_undo_redo_levels': 10,
+SUMMERNOTE_CONFIG = {
+    'iframe': False,
+    'airMode': False,
+    'styleWithTags': False,
+    'height': '400',
+    'width': '100%',
+    'toolbar': [
+        ["style", ["style"]],
+        ["font", ["bold", "italic", "underline", "superscript", "subscript", "strikethrough", "clear"]],
+        ["color", ["color"]],
+        ["para", ["ul", "ol", "paragraph"]],
+        ["insert", ["link", "picture"]],
+        ["view", ["fullscreen", "codeview"]]
+    ],
 }
 
 # To sanitize tinymce stuff
-SANITIZER_ALLOWED_TAGS = ['a', 'strong', 'img', 'li', 'ol', 'ul', 'em', 'span', 'p',
-                          'address', 'sup', 'h1', 'h2', 'n3', 'h4', 'h5', 'h6', 'pre']
-SANITIZER_ALLOWED_ATTRIBUTES = ['href']
-SANITIZER_ALLOWED_STYLES = []
+SANITIZER_ALLOWED_TAGS = ['a', 'strong', 'img', 'li', 'ol', 'ul', 'em', 'u', 'span', 'p', 'strike',
+                          'address', 'sup', 'h1', 'h2', 'n3', 'h4', 'h5', 'h6', 'pre', 'blockquote']
+SANITIZER_ALLOWED_ATTRIBUTES = ['href', 'target', 'style', 'class', 'title', 'width', 'height', 'src', 'alt']
+SANITIZER_ALLOWED_STYLES = ['color', 'background-color', 'text-align', 'margin-left']
 
 COMPRESS_ENABLED = True
 COMPRESS_OFFLINE = False
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'scss -m -C {infile} {outfile}'),
 )
-
-CSP_DEFAULT_SRC = ("'self'", )
-CSP_SCRIPT_SRC = ("'self'", "'unsafe-eval'", )
-CSP_STYLE_SRC = ("'self'", "'unsafe-inline'", )
-CSP_IMG_SRC = ("'self'", "*")
-CSP_MEDIA_SRC = ("'self'", "*")
-CSP_REPORT_ONLY = False
 
 USE_I18N = True
 USE_L10N = True

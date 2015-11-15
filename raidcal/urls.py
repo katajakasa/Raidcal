@@ -5,7 +5,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^summernote/', include('django_summernote.urls')),
     url(r'^', include('raidcal.maincal.urls')),
 ]
 

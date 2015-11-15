@@ -1,0 +1,79 @@
+{% extends "maincal/base.html" %}
+{% load i18n static sanitize crispy_forms_tags compress %}
+
+{% block title %}
+{% trans "Forum" %} - {{ block.super }}
+{% endblock %}
+
+{% block head %}
+{{ block.super }}
+    <link href="{% static "django_summernote/summernote.css" %}" type="text/css" media="all" rel="stylesheet" />
+    <link href="{% static "django_summernote/django_summernote_inplace.css" %}" type="text/css" media="all" rel="stylesheet" />
+    <script type="text/javascript" src="{% static "django_summernote/jquery.ui.widget.js" %}"></script>
+    <script type="text/javascript" src="{% static "django_summernote/jquery.iframe-transport.js" %}"></script>
+    <script type="text/javascript" src="{% static "django_summernote/jquery.fileupload.js" %}"></script>
+    <script type="text/javascript" src="{% static "django_summernote/summernote.min.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+{{ block.super }}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>{% trans "Forum" %}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>{% trans "Threads" %}</h2>
+            {% for topic in topics_page.object_list %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <span class="col-xs-6 align-left">
+                                <a href="{% url "thread" topic.id %}">{{ topic.title }}</a>
+                            </span>
+                            <span class="col-xs-6 align-right">{{ topic.time|date:"d.m.Y H:i" }}</span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <nav>
+                <ul class="pagination">
+                    <li class="{% if topics_page.number == 1 %}disabled{% endif %}">
+                        <a href="?t=1"><span>&laquo;</span></a>
+                    </li>
+                    {% for page in topics.page_range %}
+                        <li class="{% if page == topics_page.number %}active{% endif %}">
+                            <a href="?t={{ page }}">{{ page }}</a>
+                        </li>
+                    {% endfor %}
+                    <li class="{% if topics_page.number == topics.num_pages %}disabled{% endif %}">
+                        <a href="?t={{ topics.num_pages }}"><span>&raquo;</span></a>
+                    </li>
+                </ul>
+            </nav>
+            {% crispy thread_form thread_form.helper %}
+            <br />
+        </div>
+        <div class="col-sm-6">
+            <h2>{% trans "Latest posts" %}</h2>
+            {% for message in messages %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6 align-left">
+                                <a href="{% url "thread" message.topic.id %}">{{ message.topic.title }}</a>
+                            </div>
+                            <div class="col-xs-6 align-right">
+                                {{ message.time|date:"d.m.Y H:i" }} by {{ message.user }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">{{ message.content|sanitize_html }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -2,11 +2,9 @@
 
 from django.db import models
 from django.contrib.auth.models import User
-from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from custom.utils import dt_to_ts
 from django.core.urlresolvers import reverse
-from tinymce.models import HTMLField
 from django.utils import timezone
 
 
@@ -23,7 +21,7 @@ class Event(models.Model):
 
     user = models.ForeignKey(User, help_text=_('User who this event belongs to'))
     name = models.CharField(_('Event name'), max_length=32)
-    description = HTMLField(_('Event description'))
+    description = models.TextField(_('Event description'))
     start = models.DateTimeField(_('Event start date'))
     end = models.DateTimeField(_('Event end date'))
     style = models.IntegerField(_('Event style'), choices=STYLE, default=0)
@@ -90,14 +88,14 @@ class Topic(models.Model):
 class Message(models.Model):
     user = models.ForeignKey(User, verbose_name=_('User'))
     time = models.DateTimeField(_('Sent'), default=timezone.now)
-    description = HTMLField(_('Event description'))
+    content = models.TextField(_('Message content'))
     topic = models.ForeignKey(Topic)
 
     def __unicode__(self):
         end = u''
-        if len(self.description) > 16:
+        if len(self.content) > 16:
             end = u' ...'
-        return _('{}: {}{}').format(unicode(self.user), unicode(self.description)[0:16], end)
+        return _('{}: {}{}').format(unicode(self.user), unicode(self.content)[0:16], end)
 
     class Meta:
         verbose_name = _('Message')
@@ -112,7 +110,7 @@ class SiteDecoration(models.Model):
     user = models.ForeignKey(User)
     placement = models.IntegerField(_('Place where this text should be located at'),
                                     choices=PLACEMENTS, default=0, unique=True)
-    content = HTMLField()
+    content = models.TextField()
 
     def __unicode__(self):
         return unicode(self.placement)
@@ -120,11 +118,4 @@ class SiteDecoration(models.Model):
     class Meta:
         verbose_name = _('Site decoration')
         verbose_name_plural = _('Site decorations')
-
-
-admin.site.register(Event)
-admin.site.register(Participation)
-admin.site.register(SiteDecoration)
-admin.site.register(Topic)
-admin.site.register(Message)
 

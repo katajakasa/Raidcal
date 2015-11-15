@@ -1,0 +1,45 @@
+{% extends "maincal/base.html" %}
+{% load i18n static sanitize crispy_forms_tags %}
+
+{% block title %}
+{{ topic.title }} - {% trans "Thread" %} - {{ block.super }}
+{% endblock %}
+
+{% block head %}
+{{ block.super }}
+    <link href="{% static "django_summernote/summernote.css" %}" type="text/css" media="all" rel="stylesheet" />
+    <link href="{% static "django_summernote/django_summernote_inplace.css" %}" type="text/css" media="all" rel="stylesheet" />
+    <script type="text/javascript" src="{% static "django_summernote/summernote.min.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+{{ block.super }}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>{{ topic.title }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            {% for message in messages %}
+                <div class="panel panel-default">
+                    <div class="panel-heading" id="msg_{{ message.pk }}">
+                        <div class="row">
+                            <div class="col-xs-6 align-left">
+                                <a href="{% url "thread" message.topic.id %}">{{ message.topic.title }}</a>
+                            </div>
+                            <div class="col-xs-6 align-right">
+                                {{ message.time|date:"d.m.Y H:i" }} by {{ message.user }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">{{ message.content|sanitize_html }}</div>
+                </div>
+            {% endfor %}
+            {% crispy message_form message_form.helper %}
+        </div>
+        <br />
+    </div>
+</div>
+{% endblock %}
