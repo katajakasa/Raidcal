@@ -76,7 +76,7 @@ SUMMERNOTE_CONFIG = {
 
 # To sanitize tinymce stuff
 SANITIZER_ALLOWED_TAGS = ['a', 'strong', 'img', 'li', 'ol', 'ul', 'em', 'u', 'span', 'p', 'strike',
-                          'address', 'sup', 'h1', 'h2', 'n3', 'h4', 'h5', 'h6', 'pre', 'blockquote']
+                          'address', 'sup', 'h1', 'h2', 'n3', 'h4', 'h5', 'h6', 'pre', 'blockquote', 'br']
 SANITIZER_ALLOWED_ATTRIBUTES = ['href', 'target', 'style', 'class', 'title', 'width', 'height', 'src', 'alt']
 SANITIZER_ALLOWED_STYLES = ['color', 'background-color', 'text-align', 'margin-left']
 
