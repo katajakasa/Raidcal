@@ -16,9 +16,9 @@ $(function() {
         tmpl_cache: false,
         modal: '#events-modal',
         time_start: '12:00',
-		time_end: '24:00',
-		time_split: '30',
-        modal_type : 'ajax',
+        time_end: '24:00',
+        time_split: '30',
+        modal_type : 'iframe',
         modal_title: function(event) {
             return event.title
         },

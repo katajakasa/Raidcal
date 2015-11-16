@@ -1,4 +1,21 @@
-{% load static i18n compress sanitize %}
+<!DOCTYPE html>{% load sanitize static i18n compress %}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Event</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'maincal/libs/bootstrap/dist/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'maincal/libs/bootstrap/dist/css/bootstrap-theme.css' %}">
+    {% compress css %}
+    <link rel="stylesheet" type="text/x-scss" href="{% static 'maincal/style/style.scss' %}">
+    {% endcompress %}
+
+    <script type="text/javascript" src="{% static 'maincal/libs/jquery/dist/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'maincal/libs/jquery-migrate/jquery-migrate.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'maincal/libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+</head>
+<body>
 <div class="container-fluid">
     <div class="row padding-5">
         {% if not is_restricted %}
@@ -40,3 +57,5 @@
         <div class="col-xs-8">{{ event.description|sanitize_html }}</div>
     </div>
 </div>
+</body>
+</html>
