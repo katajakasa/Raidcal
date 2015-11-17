@@ -28,11 +28,11 @@ class Event(models.Model):
 
     @property
     def start_ts(self):
-        return dt_to_ts(self.start)
+        return dt_to_ts(timezone.localtime(self.start))
 
     @property
     def end_ts(self):
-        return dt_to_ts(self.end)
+        return dt_to_ts(timezone.localtime(self.end))
 
     @property
     def css_class(self):
